@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head> Asynach </head>
 <body>

@@ -1,0 +1,138 @@
+//James Amani 
+// CS 1336-020
+//Practice Final
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+const int NUM_STUDENTS = 8, NUM_GRADES = 10, NUM_INFO = 5;
+
+// Function prototypes
+double computeAverage(int[][NUM_GRADES], int, int);
+int highestScoreOnExam(int[][NUM_GRADES], int, int);
+int indexOfHighest(int[][NUM_GRADES], int, int);
+double percentInAgeRangeWithSpec(int[][NUM_GRADES], int, int, int, int);
+
+//MAIN FUNCTION
+int main()
+{
+	//Define Variables
+	string studentName[NUM_STUDENTS]; 
+	int studentID[NUM_STUDENTS];
+	int age[NUM_STUDENTS];
+	int studentGrade[NUM_STUDENTS][NUM_GRADES];
+	string information[NUM_INFO] = { "Transfer Student", "On Scholarship", "At-Risk", "Campus Housing", "Athlete" };
+	bool stuInfo[NUM_STUDENTS][NUM_INFO];
+
+
+	for (int i = 0; i < NUM_STUDENTS; i++)
+	{
+		getline(cin, studentName[i]);
+		cin >> studentID[i] >> age[i];
+		for (int j = 0; j < NUM_GRADES; j++)
+		{
+			cin >> studentGrade[i][j];
+		}
+		for (int j = 0; j < NUM_INFO; j++)
+		{
+			cin >> stuInfo[i][j];
+		}
+		cin.ignore(20, '\n');
+	}
+	cout << left << setw(22) << "Student Name" << setw(10) << "StudentID" << right << setw(4) << "Age";
+	cout << left << " Student Information" << endl;
+
+	for (int i = 0; i < 57; i++)
+		cout << "-";
+	cout << endl;
+	cout << setprecision(1) << fixed;
+
+	for (int i = 0; i < NUM_STUDENTS; i++)
+	{
+		cout << setw(22) << left << studentName[i] << setw(10) << studentID[i] << right << setw(4) << age[i] << " ";
+		bool first = true;
+		for (int j = 0; j < NUM_INFO; j++)
+		{
+			if (stuInfo[i][j] == 1)
+			{
+				if (first)
+				{
+					cout << information[j];
+					first = false;
+				}
+				else
+				{
+					cout << ", " << information[j];
+				}
+			}
+		}
+		cout << endl;
+
+	}
+	cout << endl << endl;
+	cout << left << setw(22) << "Student Name" << right << setw(27) << "Student Grades" << setw(13) << " ";
+	cout << right << setw(7) << "Avg." << endl;
+
+	for (int i = 0; i < 69; i++)
+		cout << "-";
+	cout << endl;
+	for (int i = 0; i < NUM_STUDENTS; i++)
+	{
+		cout << setw(22) << left << studentName[i];
+		for (int j = 0; j < NUM_GRADES; j++)
+			cout << right << setw(4) << studentGrade[i][j];
+		cout << setw(7) << computeAverage(studentGrade, i, NUM_GRADES) << endl;
+	}
+	cout << endl;
+	cout << right << setw(12) << "Highest" << endl;
+	cout << left << setw(5) << "Exam" << right << setw(6) << "Score" << " " << left << "Person Who Scored Highest" << endl;
+	for (int i = 0; i < 36; i++)
+		cout << "-";
+	cout << right << endl;
+	for (int i = 0; i < NUM_GRADES; i++)
+		cout << setw(4) << i + 1 << right << setw(7) << highestScoreOnExam(studentGrade, i, NUM_STUDENTS) << " " << studentName[indexOfHighest(studentGrade, i,  NUM_STUDENTS)] << endl;
+
+	// Table Building
+	cout << endl << setprecision(1) << fixed;
+	cout << left << setw (17) << " " << right << setw(38) << "Statistics on Student Information" << endl;
+	cout << left << setw (17) << " " << right << setw(10) << "Overall" << setw(10) << " 0 - 17" << setw(10) << "18 - 24";
+	cout << setw(10) << ">=25 yrs" << endl;
+	cout << left << setw(17) << " " << right << setw(10) << "-------" << setw(10) << "-------" << setw(10) << "-------";
+	cout << setw(10) << "-------" << endl;
+
+	for (int i = 0; i < NUM_INFO; i++)
+	{
+		cout << left << setw(17) << information[i] << right << setw(9);
+		cout << percentInAgeRangeWithSpec(age, stuInfo, NUM_STUDENTS, 0, 100, i) * 100 << '%';
+		cout << setw(9) << percentInAgeRangeWithSpec(age, stuInfo, NUM_STUDENTS, 0, 17, i) * 100 << '%';
+		cout << setw(9) << percentInAgeRangeWithSpec(age, stuInfo, NUM_STUDENTS, 18, 24, i) * 100 << '%';
+		cout << setw(9) << percentInAgeRangeWithSpec(age, stuInfo, NUM_STUDENTS, 25, 100, i) * 100 << '%';
+		cout << endl;
+
+	}
+  return 0;
+}
+
+// Function to compute Average
+double  computeAverage(int grade[][NUM_GRADES], int student, int numGrades)
+{
+	return 0; // dummy return statement
+}
+// Function to find the highest exam for the specified exam
+int highestScoreOnExam(int grade[][NUM_GRADES], int examIndex, int numStudents)
+{
+	return 0; 
+}
+// Another function to find the highest index on the exam
+int indexOfHighest(int grade[][NUM_GRADES], int examIndex, int numStudents)
+{
+	return 0;
+}
+// Fucntion for the percent in Age range
+double percentInAgeRangeWithSpec(int age[], bool info[NUM_INFO], int numStudents, int lower, int upper, int infoIndex)
+{
+	return 0;
+}
+
